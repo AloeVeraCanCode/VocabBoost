@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/button_add_a_word"
+        android:id="@+id/button_word"/>
+    <ListView
+        android:id="@+id/list_word"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_word">
+    </ListView>
+
+</RelativeLayout>

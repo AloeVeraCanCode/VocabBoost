@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">VocabBoost</string>
+    <string name="menu_insert">Insert</string>
+    <string-array name="drawer_elements">
+        <item>Home</item>
+        <item>View</item>
+        <item>Quiz</item>
+        <item>Wordle</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="quiz_score">Past Score</string>
+    <string name="quiz_play">PLAY</string>
+    <string name="wordle_mode">Select Difficulty</string>
+    <string name="insert_catagory">Genre Name</string>
+    <string name="enter_a_word">Enter a word</string>
+    <string name="enter_a_meaning">Enter meaning</string>
+    <string name="enter_a_sentence">Sentence</string>
+    <string name="title_activity_quiz">QuizActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="your_score">Your Score :</string>
+    <string name="title_activity_wordle">Wordle Activity</string>
+</resources>

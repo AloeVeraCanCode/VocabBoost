@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+         <ImageButton
+        android:id="@+id/button_catagory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/showcatagory"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        />
+        <ListView
+            android:id="@+id/list_catagory"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button_catagory">
+        </ListView>
+
+</RelativeLayout>
