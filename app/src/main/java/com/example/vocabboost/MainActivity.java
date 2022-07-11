@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,10 +30,25 @@ public class MainActivity extends Activity {
         drawerList.setAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_activated_1, drawer_elements));
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
+//        createTables("_wordlescore_");
+//                createTables("_quizscore_");
         //When we need to delete the dataBase////////////////////////////
          //deleteDatabase("vocabboost1");///////////////////////////////
         // /////////////////////////////////////////////////////////////
-
+    }
+    public void createTables(String tableName)
+    {
+        VocabBoostDatabaseHelper db=new VocabBoostDatabaseHelper(this);
+        SQLiteDatabase mydb=db.getWritableDatabase();
+            try {
+                mydb.execSQL("CREATE TABLE "
+                        + tableName
+                        + "(_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + "DISPLAY TEXT, "
+                        + "TIME TEXT); ");
+                Log.d("First:", "Successfully created "+tableName);
+            }
+            catch (Exception e){Log.d("First:", "Fail");return;}
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

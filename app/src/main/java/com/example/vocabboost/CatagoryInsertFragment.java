@@ -65,8 +65,8 @@ public class CatagoryInsertFragment extends Fragment implements View.OnClickList
             mydb.execSQL("CREATE TABLE "
                     + genre
                     + "(_id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + "WORD TEXT TEXT, "
-                    + "MEANING TEXT TEXT, "
+                    + "WORD TEXT, "
+                    + "MEANING TEXT, "
                     + "SENTENCE TEXT);");
             Log.d("First:", "Insertion finished!!!!");
         }
