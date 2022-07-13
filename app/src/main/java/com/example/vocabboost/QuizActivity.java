@@ -77,8 +77,10 @@ public class QuizActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.exitTop:
                 messageBox("Do you want to exit?");
+                break;
             case R.id.exitBot:
                 finishAndRemoveTask();
+                break;
             case R.id.finish:
                 prev.setVisibility(View.INVISIBLE);
                 next.setVisibility(View.INVISIBLE);
@@ -87,13 +89,14 @@ public class QuizActivity extends Activity implements View.OnClickListener {
                 exitBot.setVisibility(View.VISIBLE);
                 ScoreFragment fragment = new ScoreFragment();
                 Log.d("Seventh", "Got");
-                fragment.set(checkScore());
+                fragment.set(checkScore(),context,"_quizscore_");
                 Log.d("Seventh", "Fail1");
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.quiz_frame, fragment);
                 ft.addToBackStack(null);
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.commit();
+                break;
         }
     }
 

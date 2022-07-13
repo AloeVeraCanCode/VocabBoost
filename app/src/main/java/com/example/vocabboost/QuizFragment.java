@@ -1,6 +1,7 @@
 package com.example.vocabboost;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.google.android.material.internal.VisibilityAwareImageButton;
 
@@ -34,7 +36,7 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
         Log.d("Seventh", "Pass2");
         layout= inflater.inflate(R.layout.fragment_quiz, container, false);
         Button btn=(Button) layout.findViewById(R.id.play_quiz);
-        Button btnscr=(Button) layout.findViewById(R.id.play_quiz);
+        Button btnscr=(Button) layout.findViewById(R.id.quiz_score);
         btn.setOnClickListener(this);btnscr.setOnClickListener(this);
         return(layout);
     }
@@ -43,7 +45,13 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if(v.getId()==R.id.quiz_score)
         {
-
+            ResultFragment fragment=new ResultFragment();
+            fragment.set("_quizscore_");
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.addToBackStack(null);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.commit();
             return;
         }
         else {

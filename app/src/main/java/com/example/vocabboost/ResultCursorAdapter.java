@@ -25,10 +25,12 @@ public class ResultCursorAdapter  extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         // Find fields to populate in inflated template
-        TextView text= (TextView) view.findViewById(R.id.text_word);
-        TextView date= (TextView) view.findViewById(R.id.text_meaning);
+        String s="Your score was: ";
+        if(tableName=="_quizscore_")s="Your score was: ";
+        TextView text= (TextView) view.findViewById(R.id.score);
+        TextView date= (TextView) view.findViewById(R.id.date);
         String body = cursor.getString(cursor.getColumnIndexOrThrow("DISPLAY"));
-        text.setText(body);
+        text.setText(s+body);
         body = cursor.getString(cursor.getColumnIndexOrThrow("TIME"));
         date.setText(body);
     }

@@ -27,10 +27,10 @@ public class ResultFragment extends Fragment  {
     public Cursor cursor;
     //    public String w,m,s;
 //    bool editable;
-//    void set(Strig word,String meaning, String sentence,boolean v)
-//    {
-//        w=word;m=meaning;s=sentence;editable=v;
-//    }
+    public void set(String t)
+    {
+        tableName=t;
+    }
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -42,9 +42,9 @@ public class ResultFragment extends Fragment  {
         VocabBoostDatabaseHelper db=new VocabBoostDatabaseHelper(context);
         SQLiteDatabase mydb=db.getReadableDatabase();
         cursor=mydb.rawQuery("SELECT  * FROM "+tableName, null);
-        Log.d("****!!Second:",Integer.toString(cursor.getCount()));
+        Log.d("14th:",Integer.toString(cursor.getCount())+tableName);
         Log.d("!!!!!!!Second:",tableName);
-        ExpandCursorAdapter eca=new ExpandCursorAdapter(context,cursor,tableName);
+        ResultCursorAdapter eca=new ResultCursorAdapter(context,cursor,tableName);
         lv.setAdapter(eca);
         return(layout);
     }
