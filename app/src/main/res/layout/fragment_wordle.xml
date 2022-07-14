@@ -27,4 +27,13 @@
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         />
+    <ImageButton
+        android:id="@+id/wordle_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/button_previous_attempts"
+        android:layout_below="@+id/wordle_hard"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        />
 </RelativeLayout>

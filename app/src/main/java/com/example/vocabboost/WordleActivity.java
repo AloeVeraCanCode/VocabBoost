@@ -124,7 +124,7 @@ public class WordleActivity extends Activity  implements View.OnClickListener{
         else if(cur.equals("<BackSpace"))
         {
             if(col==0){return;}
-            else{ text[row][--col].setText("");trial.substring(0,trial.length()-1);}
+            else{ text[row][--col].setText("");trial=trial.substring(0,trial.length()-1);}
         }
         else
         {
@@ -142,6 +142,8 @@ public class WordleActivity extends Activity  implements View.OnClickListener{
     }
     @SuppressLint("ResourceAsColor")
     public void check(){
+        Log.d("12th",actualWord);
+        Log.d("12th",trial);
         int j,matched=0;
         for(j=0;j<l;j++)
         {

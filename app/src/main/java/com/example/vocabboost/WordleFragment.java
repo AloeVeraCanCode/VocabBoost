@@ -28,7 +28,7 @@ import java.util.Random;
 public class WordleFragment extends Fragment implements View.OnClickListener{
 
     public Context context;
-    public ImageButton hard,easy;
+    public ImageButton hard,easy,history;
     public  View layout;
     public String randomWord;
     public int key;
@@ -44,8 +44,10 @@ public class WordleFragment extends Fragment implements View.OnClickListener{
         layout= inflater.inflate(R.layout.fragment_wordle, container, false);
         hard=(ImageButton)layout.findViewById(R.id.wordle_hard);
         easy=(ImageButton)layout.findViewById(R.id.wordle_easy);
+        history=(ImageButton)layout.findViewById(R.id.wordle_history);
         hard.setOnClickListener(this);
         easy.setOnClickListener(this);
+        history.setOnClickListener(this);
         return(layout);
     }
 
@@ -59,13 +61,17 @@ public class WordleFragment extends Fragment implements View.OnClickListener{
             callAPIAndStartActivity();
             Log.d("ninth",word);
         }
-        else{
+        else if(v.getId()==R.id.wordle_easy){
             try{
             QuizObject q=new QuizObject(1,context);
             startWordleActivity(q.question[0].get(q.answerNo[0].get(0)+1));}
             catch(Exception e){
                 Toast.makeText(context,"Something went wrong :(",Toast.LENGTH_SHORT).show();
             }
+        }
+        else
+        {
+
         }
 
     }

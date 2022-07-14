@@ -74,7 +74,6 @@ public class ExpandWordFragment extends Fragment implements View.OnClickListener
         Log.d("!!Second:","On");
         return(layout);
     }
-
     @Override
     public void onClick(View v) {
         Log.d("!!Second:","Click0");
