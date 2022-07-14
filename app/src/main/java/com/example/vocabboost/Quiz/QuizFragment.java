@@ -50,7 +50,7 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
         if(v.getId()==R.id.quiz_score)
         {
             ResultFragment fragment=new ResultFragment();
-            fragment.set("_WordleAttempts_");
+            fragment.set("_quizscore_");
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);
             ft.addToBackStack(null);

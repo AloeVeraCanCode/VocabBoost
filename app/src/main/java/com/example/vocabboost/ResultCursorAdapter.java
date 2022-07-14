@@ -29,13 +29,12 @@ public class ResultCursorAdapter  extends CursorAdapter {
     // such as setting the text on a TextView.
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        if(tableName=="_WordleAttempts_")wordle(cursor,view);
+        if(tableName.equals("_WordleAttempts_"))wordle(cursor,view);
         else quiz(cursor,view);
     }
 
     private void quiz(Cursor cursor,View view) {
         String s="Your score was: ";
-        if(tableName=="_quizscore_")s="Your score was: ";
         TextView text= (TextView) view.findViewById(R.id.score);
         TextView date= (TextView) view.findViewById(R.id.date);
         String body = cursor.getString(cursor.getColumnIndexOrThrow("DISPLAY"));
