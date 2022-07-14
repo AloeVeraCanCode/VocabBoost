@@ -2,7 +2,6 @@ package com.example.vocabboost;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.os.Bundle;
 
 import android.app.Fragment;
@@ -10,9 +9,10 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Switch;
+
+import com.example.vocabboost.Quiz.QuizFragment;
+import com.example.vocabboost.Wordle.WordleFragment;
 
 
 public class HomeFragment extends Fragment implements  View.OnClickListener{

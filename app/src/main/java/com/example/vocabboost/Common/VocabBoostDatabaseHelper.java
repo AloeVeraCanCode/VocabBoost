@@ -1,4 +1,4 @@
-package com.example.vocabboost;
+package com.example.vocabboost.Common;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,7 +11,7 @@ public class VocabBoostDatabaseHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "vocabboost1"; // the name of our database
     private static final int DB_VERSION = 1;
     private  SQLiteDatabase mydb;
-    VocabBoostDatabaseHelper(Context context) {
+    public VocabBoostDatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         Log.d("First:","Constructor");
     }

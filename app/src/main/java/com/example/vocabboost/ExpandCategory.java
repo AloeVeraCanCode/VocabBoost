@@ -19,7 +19,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.material.internal.VisibilityAwareImageButton;
+import com.example.vocabboost.Common.VocabBoostDatabaseHelper;
 
 public class ExpandCategory extends Fragment implements View.OnClickListener,AdapterView.OnItemClickListener {
     public String tableName;

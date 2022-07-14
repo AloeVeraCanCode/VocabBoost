@@ -1,4 +1,4 @@
-package com.example.vocabboost;
+package com.example.vocabboost.Quiz;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
@@ -14,6 +14,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
+import com.example.vocabboost.QuizActivity;
+import com.example.vocabboost.QuizObject;
+import com.example.vocabboost.R;
+import com.example.vocabboost.ResultFragment;
 import com.google.android.material.internal.VisibilityAwareImageButton;
 
 
@@ -46,7 +50,7 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
         if(v.getId()==R.id.quiz_score)
         {
             ResultFragment fragment=new ResultFragment();
-            fragment.set("_quizscore_");
+            fragment.set("_WordleAttempts_");
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);
             ft.addToBackStack(null);

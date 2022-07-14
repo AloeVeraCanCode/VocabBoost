@@ -1,7 +1,6 @@
 package com.example.vocabboost;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,20 +12,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Switch;
-import android.widget.TextView;
+
+import com.example.vocabboost.Common.VocabBoostDatabaseHelper;
 
 
 public class ResultFragment extends Fragment  {
     public String tableName;
     public Context context;
     public Cursor cursor;
-    //    public String w,m,s;
-//    bool editable;
     public void set(String t)
     {
         tableName=t;

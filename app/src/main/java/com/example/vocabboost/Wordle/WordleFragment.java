@@ -1,13 +1,12 @@
-package com.example.vocabboost;
+package com.example.vocabboost.Wordle;
 
-import android.content.ContentValues;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import android.app.Fragment;
 
-import android.os.IBinder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +20,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.vocabboost.Common.SerializedContext;
+import com.example.vocabboost.QuizObject;
+import com.example.vocabboost.R;
+import com.example.vocabboost.ResultFragment;
+import com.example.vocabboost.WordleActivity;
 
 import java.util.Random;
 
@@ -71,7 +75,14 @@ public class WordleFragment extends Fragment implements View.OnClickListener{
         }
         else
         {
-
+            ResultFragment fragment=new ResultFragment();
+            fragment.set("_WordleAttempts_");
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.addToBackStack(null);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.commit();
+            return;
         }
 
     }
@@ -107,9 +118,14 @@ public class WordleFragment extends Fragment implements View.OnClickListener{
     public void startWordleActivity(String word) {
         Intent intent = new Intent(context, WordleActivity.class);
         intent.putExtra("word",word);
-        Log.d("ninth",word);
+//        SerializedContext s=new SerializedContext(context);
+//        intent.putExtra("prevcontext",s);
+//        Log.d("15th", String.valueOf(s));
+//        Log.d("ninth",word);
         try{
-            startActivity(intent);}
+            Log.d("ninth",word);
+            startActivity(intent);
+        }
         catch (Exception e){Log.d("Seventh", "activity fail");}
     }
 }

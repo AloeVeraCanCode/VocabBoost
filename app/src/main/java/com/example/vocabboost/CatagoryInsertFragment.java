@@ -1,10 +1,8 @@
 package com.example.vocabboost;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -17,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.example.vocabboost.Common.VocabBoostDatabaseHelper;
+import com.example.vocabboost.Common.VocabBoostDatabaseHelper;
 
 public class CatagoryInsertFragment extends Fragment implements View.OnClickListener {
     public EditText et;

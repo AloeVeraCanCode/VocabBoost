@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.example.vocabboost.Common.VocabBoostDatabaseHelper;
+
 
 public class WordInsertionFromWordInsertion extends Fragment implements  View.OnClickListener{
     public Context context;

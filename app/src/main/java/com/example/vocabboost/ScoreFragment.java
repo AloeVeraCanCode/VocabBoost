@@ -1,6 +1,5 @@
 package com.example.vocabboost;
 
-import android.app.FragmentTransaction;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,8 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.vocabboost.Common.VocabBoostDatabaseHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -54,5 +54,4 @@ public class ScoreFragment extends Fragment {
         Date date = new Date();
         return(formatter.format(date));
     }
-
 }

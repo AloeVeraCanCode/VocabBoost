@@ -1,10 +1,13 @@
 package com.example.vocabboost;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ResultCursorAdapter  extends CursorAdapter {
@@ -26,12 +29,33 @@ public class ResultCursorAdapter  extends CursorAdapter {
     // such as setting the text on a TextView.
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        // Find fields to populate in inflated template
+        if(tableName=="_WordleAttempts_")wordle(cursor,view);
+        else quiz(cursor,view);
+    }
+
+    private void quiz(Cursor cursor,View view) {
         String s="Your score was: ";
         if(tableName=="_quizscore_")s="Your score was: ";
         TextView text= (TextView) view.findViewById(R.id.score);
         TextView date= (TextView) view.findViewById(R.id.date);
         String body = cursor.getString(cursor.getColumnIndexOrThrow("DISPLAY"));
+        text.setText(s+body);
+        body = cursor.getString(cursor.getColumnIndexOrThrow("TIME"));
+        date.setText(body);
+    }
+
+    private void wordle(Cursor cursor,View view) {
+        String s="Your word was: ";
+        TextView text= (TextView) view.findViewById(R.id.score);
+        TextView date= (TextView) view.findViewById(R.id.date);
+        LinearLayout l=(LinearLayout) view.findViewById(R.id.scoreframe) ;
+        String body = cursor.getString(cursor.getColumnIndexOrThrow("WORD"));
+        String color=cursor.getString(cursor.getColumnIndexOrThrow("COLOR"));
+        color=color.replaceAll("\\s","");
+        if(color.equals("G")){
+            l.setBackgroundColor(Color.parseColor("#49FF33"));}
+        else if(color.equals("R"))
+            l.setBackgroundColor(Color.parseColor("#FF8A8A"));
         text.setText(s+body);
         body = cursor.getString(cursor.getColumnIndexOrThrow("TIME"));
         date.setText(body);

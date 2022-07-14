@@ -5,7 +5,9 @@ import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -22,6 +24,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.vocabboost.Common.VocabBoostDatabaseHelper;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class WordleActivity extends Activity  implements View.OnClickListener{
 
     public RelativeLayout relativeLayout,wordle;
@@ -30,12 +37,15 @@ public class WordleActivity extends Activity  implements View.OnClickListener{
     int row,col;
     Button text[][];
     String trial,actualWord;
+    public Context context;
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context=this;
         row=col=0;trial="";actualWord="";
         actualWord=getIntent().getStringExtra("word");
+        //prevcontext=(Context)getIntent().getSerializableExtra("prevcontext");
         Log.d("12th",actualWord);
         actualWord=actualWord.replaceAll("\\s","");
         l=actualWord.length();
@@ -159,10 +169,33 @@ public class WordleActivity extends Activity  implements View.OnClickListener{
         if(matched==l)
         {
             showWord.setText("You guessed it correct!!");row=100;
+            makeAnEntryToTheDataBase(actualWord,"G");
         }
         else if(row==4)
         {
             showWord.setText("Your word was "+actualWord);row=100;
+            makeAnEntryToTheDataBase(actualWord,"R");
         }
+    }
+
+    private void makeAnEntryToTheDataBase(String w,String c) {
+        try {
+            VocabBoostDatabaseHelper db=new VocabBoostDatabaseHelper(context);
+            Log.d("First:","Here");
+            SQLiteDatabase mydb=db.getWritableDatabase();
+            ContentValues toBeInserted = new ContentValues();
+            toBeInserted.put("WORD", w);
+            toBeInserted.put("COLOR", c);
+            toBeInserted.put("TIME", findTime());
+            mydb.insert("_WordleAttempts_", null, toBeInserted);
+            mydb.close();db.close();
+        }
+        catch (Exception e){Log.d("First:", "UNFORTUNATE");}
+    }
+    public String findTime()
+    {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        return(formatter.format(date));
     }
 }

@@ -2,11 +2,8 @@ package com.example.vocabboost;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
-import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +13,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.vocabboost.Common.VocabBoostDatabaseHelper;
+import com.example.vocabboost.Quiz.QuizFragment;
+import com.example.vocabboost.Wordle.WordleFragment;
 
 public class MainActivity extends Activity {
 
@@ -30,7 +31,7 @@ public class MainActivity extends Activity {
         drawerList.setAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_activated_1, drawer_elements));
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
-//        createTables("_wordlescore_");
+//        createTables("_WordleAttempts_");
 //                createTables("_quizscore_");
         //When we need to delete the dataBase////////////////////////////
          //deleteDatabase("vocabboost1");///////////////////////////////
@@ -45,6 +46,8 @@ public class MainActivity extends Activity {
                         + tableName
                         + "(_id INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + "DISPLAY TEXT, "
+                        + "WORD TEXT, "
+                        + "COLOR TEXT, "
                         + "TIME TEXT); ");
                 Log.d("First:", "Successfully created "+tableName);
             }
