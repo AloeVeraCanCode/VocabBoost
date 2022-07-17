@@ -4,6 +4,8 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import android.app.Fragment;
@@ -15,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.io.IOException;
+
 
 public class ExpandWordFragment extends Fragment implements View.OnClickListener {
     public String w,m,s,tableName;
@@ -23,6 +27,7 @@ public class ExpandWordFragment extends Fragment implements View.OnClickListener
     public Cursor cursor;
     public View layout;
     public Context context;
+    private MediaPlayer mp;
     void set(String word,String meaning, String sentence,String t,int x)
     {
         w=word;m=meaning;s=sentence;_id=x;tableName=t;
@@ -66,16 +71,22 @@ public class ExpandWordFragment extends Fragment implements View.OnClickListener
         TextView wt=layout.findViewById(R.id.input_word);
         TextView mt=layout.findViewById(R.id.input_meaning);
         TextView st=layout.findViewById(R.id.input_sentence);
+        ImageButton audio=layout.findViewById(R.id.audio);
         wt.setText(w);
         mt.setText(m);
         st.setText(s);
         ImageButton editBtn=layout.findViewById(R.id.button_edit);
         editBtn.setOnClickListener(this);
+        audio.setOnClickListener(this);
         Log.d("!!Second:","On");
         return(layout);
     }
     @Override
     public void onClick(View v) {
+        if(v.getId()==R.id.audio) {
+            String url="https://ssl.gstatic.com/dictionary/static/sounds/20200429/hefty--_gb_2.mp3";
+            playSound(url);return;
+        }
         Log.d("!!Second:","Click0");
         WordInsertionFromWordInsertion fragment=new WordInsertionFromWordInsertion();
         Log.d("!!Second:","Click1");
@@ -86,5 +97,19 @@ public class ExpandWordFragment extends Fragment implements View.OnClickListener
         ft.addToBackStack(null);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
+    }
+
+    private void playSound(String url) {
+        mp=new MediaPlayer();
+        mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        try {
+            Log.d("15th","Success");
+            mp.setDataSource(url);
+            mp.prepare();
+            mp.start();
+            Log.d("15th","Success");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

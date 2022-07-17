@@ -2,6 +2,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+    <ImageButton
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/audio_speaker_on"
+        android:id="@+id/audio"
+        android:scaleType="fitCenter"/>
     <TextView
         android:id="@+id/text_word"
         android:layout_width="wrap_content"
